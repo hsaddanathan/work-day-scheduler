@@ -17,8 +17,6 @@ var time = setInterval(function(){
 // 3. Populate rows
 function populateRows(){
     for(var i=0; i<workDayHours.length;i++){
-        var newRow = "<row>"
-
     var newRow = $("<div>");
     newRow.addClass("row time-block");
     newRow.attr("id", militaryTime[i]);
@@ -26,16 +24,18 @@ function populateRows(){
     var hourHeader = $("<div>");
     hourHeader.addClass("col-2 hour")
     hourHeader.append(workDayHours[i]);
-    console.log(hourHeader)
     newRow.append(hourHeader);
 
     var taskInput = $("<textarea placeholder='Add Event'></textarea>"
-    )
+    );
     taskInput.addClass("col-9 future");
     newRow.append(taskInput);
 
     //<button type="button" class="btn btn-primary">Primary</button>
-    
+    var saveButton = $("<button type='button' class='btn btn-primary'></button>");
+    saveButton.addClass("col-1 saveBtn");
+    saveButton.append("<i :hover class='far fa-save'></i>")
+    newRow.append(saveButton);
     
     
     
