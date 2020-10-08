@@ -45,12 +45,12 @@ $(document).ready(function () {
   }
 
   //Clear Button
-function showClearButton() {
+  function showClearButton() {
     //Padding Between bottom of tasks and clear button
     var spacing = $("<div>");
     spacing.attr("id", "spacer");
     $("#content").append(spacing);
-
+    //New Div for Clear Button
     var clearDiv = $("<div>");
     clearDiv.addClass("text-center");
 
@@ -63,7 +63,7 @@ function showClearButton() {
 
     $("#content").append(clearDiv);
   }
-  // 3. Populate rows
+  // Populate rows
   function populateRows() {
     for (var i = 0; i < workDayHours.length; i++) {
       //Import any saved value from local storage
@@ -72,22 +72,23 @@ function showClearButton() {
       if (storedTask === null) {
         storedTask = "";
       }
-
+      //New Row for Each hour
       var newRow = $("<div>");
       newRow.addClass("row time-block");
       newRow.attr("id", militaryTime[i]);
-
+      //Time Header Column
       var hourHeader = $("<div>");
       hourHeader.addClass("col-2 hour");
       hourHeader.append(workDayHours[i]);
       newRow.append(hourHeader);
-
+      //Task Input Column
       var taskInput = $(
         "<textarea placeholder='Add Event'>" + storedTask + "</textarea>"
       );
       taskInput.addClass("col-9");
       newRow.append(taskInput);
 
+      //Save Button
       //<button type="button" class="btn btn-primary">Primary</button>
       var saveButton = $("<button type='button submit'></button>");
       saveButton.addClass("col-1 saveBtn btn btn-primary");
@@ -96,7 +97,7 @@ function showClearButton() {
 
       $("#content").append(newRow);
 
-      //Event Listener
+      //Event Listener for save button
       saveButton.on("click", function () {
         var createdTask = $(this).siblings("textarea").val();
         var taskTime = $(this).siblings("div").text();
@@ -123,7 +124,6 @@ function showClearButton() {
       }
     });
   }
-
-
+// Function Call
   populateRows();
 });
