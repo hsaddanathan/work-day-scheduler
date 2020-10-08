@@ -28,7 +28,6 @@ $(document).ready(function () {
   function rowColor() {
     //Grab current hour
     var currentHour = moment().hour();
-    console.log(currentHour);
     //Checks Id which is coded to military time.
     //Depending on the time the appropriate class will be assigned and
     //The background of the text input will change
@@ -101,8 +100,6 @@ $(document).ready(function () {
       saveButton.on("click", function () {
         var createdTask = $(this).siblings("textarea").val();
         var taskTime = $(this).siblings("div").text();
-        // console.log (createdTask);
-        // console.log(taskTime);
         localStorage.setItem(taskTime, createdTask);
       });
     }
@@ -111,11 +108,9 @@ $(document).ready(function () {
 
     $("#clear-tasks").on("click", function (event) {
       event.preventDefault();
-      console.log("you clicked button");
       var clearConfirm = confirm(
         "Are you sure you want to clear the scheduler?"
       );
-      console.log(clearConfirm);
       if (clearConfirm === true) {
         window.localStorage.clear();
         $(".time-block").remove();
