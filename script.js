@@ -118,6 +118,7 @@ function showClearButton() {
       if (clearConfirm === true) {
         window.localStorage.clear();
         $(".time-block").remove();
+        $("#clear-tasks").remove();
         populateRows();
       }
     });
